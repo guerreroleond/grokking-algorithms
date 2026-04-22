@@ -25,18 +25,28 @@ using GrokkingAlgorithms._02SelectionSort;
 
 #region [GA0202] - SelectionSort - Order Queue
 
-OrderQueue queue = new();
-queue.Add("Order 1");
-queue.Add("Order 2");
-queue.Add("Order 3");
+// OrderQueue queue = new();
+// queue.Add("Order 1");
+// queue.Add("Order 2");
+// queue.Add("Order 3");
 
-Console.WriteLine(queue.Take()); // Expected: Order 1
-Console.WriteLine(queue.Take()); // Expected: Order 2
+// Console.WriteLine(queue.Take()); // Expected: Order 1
+// Console.WriteLine(queue.Take()); // Expected: Order 2
 
-queue.Add("Order 4");
+// queue.Add("Order 4");
 
-Console.WriteLine(queue.Take()); // Expected: Order 3
-Console.WriteLine(queue.Take()); // Expected: Order 4
-Console.WriteLine(queue.Take()); // Expected: (empty)
+// Console.WriteLine(queue.Take()); // Expected: Order 3
+// Console.WriteLine(queue.Take()); // Expected: Order 4
+// Console.WriteLine(queue.Take()); // Expected: (empty)
 
 #endregion [GA0202] - SelectionSort - Order Queue
+
+#region [GA0206] - SelectionSort
+
+int[] unsorted = [64, 25, 12, 22, 11];
+
+int[] sorted = SelectionSort.Sort(unsorted);
+
+Console.WriteLine($"Sorted: [{string.Join(", ", sorted)}]"); // Expected: [11, 12, 22, 25, 64]
+
+#endregion [GA0206] - SelectionSort
