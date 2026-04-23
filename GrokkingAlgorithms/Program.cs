@@ -1,5 +1,6 @@
 ﻿using GrokkingAlgorithms._01IntroToAlgorithms;
 using GrokkingAlgorithms._02SelectionSort;
+using GrokkingAlgorithms._03Recursion;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -43,10 +44,23 @@ using GrokkingAlgorithms._02SelectionSort;
 
 #region [GA0206] - SelectionSort
 
-int[] unsorted = [64, 25, 12, 22, 11];
+// int[] unsorted = [64, 25, 12, 22, 11];
 
-int[] sorted = SelectionSort.Sort(unsorted);
+// int[] sorted = SelectionSort.Sort(unsorted);
 
-Console.WriteLine($"Sorted: [{string.Join(", ", sorted)}]"); // Expected: [11, 12, 22, 25, 64]
+// Console.WriteLine($"Sorted: [{string.Join(", ", sorted)}]"); // Expected: [11, 12, 22, 25, 64]
 
 #endregion [GA0206] - SelectionSort
+
+#region [GA0301] - Recursion - Factorial
+
+Factorial factorial = new();
+
+//Console.WriteLine($"Factorial of 0: {Factorial.Fact(0)}"); // Expected: 1
+//Console.WriteLine($"Factorial of 1: {Factorial.Fact(1)}"); // Expected: 1
+Console.WriteLine($"Factorial of 5: {Factorial.Fact(5)}"); // Expected: 120
+//Console.WriteLine($"Factorial of 10: {Factorial.Fact(10)}"); // Expected: 3628800
+
+#endregion [GA0301] - Recursion - Factorial
+
+Console.ReadKey();
