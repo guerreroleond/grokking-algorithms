@@ -1,6 +1,7 @@
 ﻿using GrokkingAlgorithms._01IntroToAlgorithms;
 using GrokkingAlgorithms._02SelectionSort;
 using GrokkingAlgorithms._03Recursion;
+using GrokkingAlgorithms._04Quicksort;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -54,13 +55,23 @@ using GrokkingAlgorithms._03Recursion;
 
 #region [GA0301] - Recursion - Factorial
 
-Factorial factorial = new();
-
 //Console.WriteLine($"Factorial of 0: {Factorial.Fact(0)}"); // Expected: 1
 //Console.WriteLine($"Factorial of 1: {Factorial.Fact(1)}"); // Expected: 1
-Console.WriteLine($"Factorial of 5: {Factorial.Fact(5)}"); // Expected: 120
+//Console.WriteLine($"Factorial of 5: {Factorial.Fact(5)}"); // Expected: 120
 //Console.WriteLine($"Factorial of 10: {Factorial.Fact(10)}"); // Expected: 3628800
 
 #endregion [GA0301] - Recursion - Factorial
+
+#region [GA0401] - Quicksort - Recursive Sum
+
+// RecursiveSum recursiveSum = new();
+
+// int[] nums = [1, 2, 3, 4, 5];
+// Console.WriteLine($"Sum: {RecursiveSum.Sum(nums)}"); // Expected: 15
+
+int[] nums = [];
+Console.WriteLine($"Sum: {RecursiveSum.Sum(nums)}"); // Expected: 0
+
+#endregion [GA0401] - Quicksort - Recursive Sum
 
 Console.ReadKey();
