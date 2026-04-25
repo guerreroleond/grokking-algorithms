@@ -69,9 +69,19 @@ using GrokkingAlgorithms._04Quicksort;
 // int[] nums = [1, 2, 3, 4, 5];
 // Console.WriteLine($"Sum: {RecursiveSum.Sum(nums)}"); // Expected: 15
 
-int[] nums = [];
-Console.WriteLine($"Sum: {RecursiveSum.Sum(nums)}"); // Expected: 0
+// int[] nums = [];
+// Console.WriteLine($"Sum: {RecursiveSum.Sum(nums)}"); // Expected: 0
 
 #endregion [GA0401] - Quicksort - Recursive Sum
 
-Console.ReadKey();
+#region [GA0402] - Quicksort - Recursive Count
+
+// int[] items = [1, 2, 3, 4, 5, 20];
+// Console.WriteLine($"Count: {RecursiveCount.Count(items)}"); // Expected: 6
+
+int[] items = [];
+Console.WriteLine($"Count: {RecursiveCount.Count(items)}"); // Expected: 0
+
+#endregion [GA0402] - Quicksort - Recursive Count
+
+Console.Read();

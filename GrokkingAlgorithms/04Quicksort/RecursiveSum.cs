@@ -3,7 +3,7 @@ namespace GrokkingAlgorithms._04Quicksort;
 public class RecursiveSum
 {
     /// <summary>
-    /// Recursively calculates the sum of all elements in the array.
+    /// [GA0402] Recursively calculates the sum of all elements in the array.
     /// If the array is empty or null, return zero,
     /// Otherwhise, the total sum is the first number in the array
     /// + the sum of the rest of the array.
@@ -19,8 +19,8 @@ public class RecursiveSum
         else
         {
             var segment = new ArraySegment<int>(
-                nums, 1, nums.Length - 1);
-            return nums[0] + Sum(segment.ToArray<int>());
+                nums, 1, nums.Length - 1).ToArray<int>();
+            return nums[0] + Sum(segment);
         }
     }
 }
