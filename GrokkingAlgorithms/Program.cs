@@ -79,9 +79,19 @@ using GrokkingAlgorithms._04Quicksort;
 // int[] items = [1, 2, 3, 4, 5, 20];
 // Console.WriteLine($"Count: {RecursiveCount.Count(items)}"); // Expected: 6
 
-int[] items = [];
-Console.WriteLine($"Count: {RecursiveCount.Count(items)}"); // Expected: 0
+// int[] items = [];
+// Console.WriteLine($"Count: {RecursiveCount.Count(items)}"); // Expected: 0
 
 #endregion [GA0402] - Quicksort - Recursive Count
+
+#region [GA0403] - Quicksort - Recursive Max
+
+int[] items = [3, 100, 7, 2, 5, 4, 56];
+Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 100
+
+// items = [42];
+// Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 42
+
+#endregion [GA0403] - Quicksort - Recursive Max
 
 Console.Read();
