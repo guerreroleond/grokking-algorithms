@@ -86,12 +86,25 @@ using GrokkingAlgorithms._04Quicksort;
 
 #region [GA0403] - Quicksort - Recursive Max
 
-int[] items = [3, 100, 7, 2, 5, 4, 56];
-Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 100
+// int[] items = [3, 100, 7, 2, 5, 4, 56];
+// Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 100
 
 // items = [42];
 // Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 42
 
 #endregion [GA0403] - Quicksort - Recursive Max
+
+#region [GA0404] - Quicksort - Quicksort
+
+int[] nums = [3, 1, 7, 2, 5, 4, 6];
+Console.WriteLine($"Sorted: [{string.Join(", ", Quicksort.QSort(nums))}]"); // Expected: [1, 2, 3, 4, 5, 6, 7]
+
+// int[] nums = [1];
+// Console.WriteLine($"Sorted: [{string.Join(", ", Quicksort.QSort(nums))}]"); // Expected: [1]
+
+// int[] nums = [];
+// Console.WriteLine($"Sorted: [{string.Join(", ", Quicksort.QSort(nums))}]"); // Expected: []
+
+#endregion [GA0404] - Quicksort - Quicksort
 
 Console.Read();
