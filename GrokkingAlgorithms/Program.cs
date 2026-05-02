@@ -2,6 +2,7 @@
 using GrokkingAlgorithms._02SelectionSort;
 using GrokkingAlgorithms._03Recursion;
 using GrokkingAlgorithms._04Quicksort;
+using GrokkingAlgorithms._06BreadthFirstSearch;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -86,12 +87,49 @@ using GrokkingAlgorithms._04Quicksort;
 
 #region [GA0403] - Quicksort - Recursive Max
 
-int[] items = [3, 100, 7, 2, 5, 4, 56];
-Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 100
+// int[] items = [3, 100, 7, 2, 5, 4, 56];
+// Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 100
 
 // items = [42];
 // Console.WriteLine($"Max: {RecursiveMax.Max(items)}"); // Expected: 42
 
 #endregion [GA0403] - Quicksort - Recursive Max
+
+#region [GA0601] - BFS - BreadthFirstSearch
+
+var graph = new Dictionary<string, List<string>>
+{
+    ["you"] =
+        [
+            "Alice",
+            "Bob",
+            "Claire"
+        ],
+    ["Bob"] =
+        [
+            "Peggyyyy",
+            "Anuj"
+        ],
+    ["Alice"] =
+        [
+            "Peggyyyy"
+        ],
+    ["Claire"] =
+        [
+            "Thom",
+            "Jonny"
+        ],
+    ["Peggyyyy"] = [],
+    ["Anuj"] = [],
+    ["Thom"] = [],
+    ["Jonny"] = []
+};
+
+
+bool found = BreadthFirstSearch.Search("you", graph);
+Console.WriteLine($"Search from you: {found}"); // Expected: true
+
+
+#endregion [GA0601] - BFS - BreadthFirstSearch
 
 Console.Read();
