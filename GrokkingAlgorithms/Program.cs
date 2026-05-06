@@ -3,6 +3,7 @@ using GrokkingAlgorithms._02SelectionSort;
 using GrokkingAlgorithms._03Recursion;
 using GrokkingAlgorithms._04Quicksort;
 using GrokkingAlgorithms._06BreadthFirstSearch;
+using GrokkingAlgorithms._07Trees;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -97,39 +98,55 @@ using GrokkingAlgorithms._06BreadthFirstSearch;
 
 #region [GA0601] - BFS - BreadthFirstSearch
 
-var graph = new Dictionary<string, List<string>>
-{
-    ["you"] =
-        [
-            "Alice",
-            "Bob",
-            "Claire"
-        ],
-    ["Bob"] =
-        [
-            "Peggyyyy",
-            "Anuj"
-        ],
-    ["Alice"] =
-        [
-            "Peggyyyy"
-        ],
-    ["Claire"] =
-        [
-            "Thom",
-            "Jonny"
-        ],
-    ["Peggyyyy"] = [],
-    ["Anuj"] = [],
-    ["Thom"] = [],
-    ["Jonny"] = []
-};
+// var graph = new Dictionary<string, List<string>>
+// {
+//     ["you"] =
+//         [
+//             "Alice",
+//             "Bob",
+//             "Claire"
+//         ],
+//     ["Bob"] =
+//         [
+//             "Peggyyyy",
+//             "Anuj"
+//         ],
+//     ["Alice"] =
+//         [
+//             "Peggyyyy"
+//         ],
+//     ["Claire"] =
+//         [
+//             "Thom",
+//             "Jonny"
+//         ],
+//     ["Peggyyyy"] = [],
+//     ["Anuj"] = [],
+//     ["Thom"] = [],
+//     ["Jonny"] = []
+// };
 
-
-bool found = BreadthFirstSearch.Search("you", graph);
-Console.WriteLine($"Search from you: {found}"); // Expected: true
-
+// bool found = BreadthFirstSearch.Search("you", graph);
+// Console.WriteLine($"Search from you: {found}"); // Expected: true
 
 #endregion [GA0601] - BFS - BreadthFirstSearch
 
-Console.Read();
+#region [GA0701] - Trees - File Directories
+
+FileDirNode pics = new() { Name = "pics", IsFile = false };
+FileDirNode twoZeroZeroOne = new() { Name = "2001", IsFile = false };
+FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
+FileDirNode a = new() { Name = "a.pdf", IsFile = true };
+FileDirNode space = new() { Name = "space.png", IsFile = true };
+
+Dictionary<FileDirNode, List<FileDirNode>> tree = new()
+{
+    [pics] = [twoZeroZeroOne, odyssey],
+    [twoZeroZeroOne] = [a, space]
+};
+
+FileDirectories.PrintFiles(pics, tree);
+
+#endregion [GA0701] - Trees - File Directories
+
+    Console.Read();
