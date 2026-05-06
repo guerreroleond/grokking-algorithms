@@ -133,20 +133,42 @@ using GrokkingAlgorithms._07Trees;
 
 #region [GA0701] - Trees - File Directories
 
-FileDirNode pics = new() { Name = "pics", IsFile = false };
-FileDirNode twoZeroZeroOne = new() { Name = "2001", IsFile = false };
-FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
-FileDirNode a = new() { Name = "a.pdf", IsFile = true };
-FileDirNode space = new() { Name = "space.png", IsFile = true };
+// FileDirNode pics = new() { Name = "pics", IsFile = false };
+// FileDirNode twoZeroZeroOne = new() { Name = "2001", IsFile = false };
+// FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
+// FileDirNode a = new() { Name = "a.pdf", IsFile = true };
+// FileDirNode space = new() { Name = "space.png", IsFile = true };
 
-Dictionary<FileDirNode, List<FileDirNode>> tree = new()
-{
-    [pics] = [twoZeroZeroOne, odyssey],
-    [twoZeroZeroOne] = [a, space]
-};
+// Dictionary<FileDirNode, List<FileDirNode>> tree = new()
+// {
+//     [pics] = [twoZeroZeroOne, odyssey],
+//     [twoZeroZeroOne] = [a, space]
+// };
 
-FileDirectories.PrintFiles(pics, tree);
+// FileDirectories.PrintFiles(pics, tree);
 
 #endregion [GA0701] - Trees - File Directories
+
+#region [GA0702] - Trees - A Space Odyssey
+
+FileDirNode a = new() { Name = "a.pdf", IsFile = true };
+FileDirNode space = new() { Name = "space.png", IsFile = true };
+FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
+FileDirNode twoZeroZeroOne = new()
+{
+    Name = "2001",
+    IsFile = false,
+    Childs = [ a, space]
+};
+FileDirNode pics = new()
+{
+    Name = "pics",
+    IsFile = false,
+    Childs = [twoZeroZeroOne, odyssey]
+};
+
+RecursiveDepthFirstSearch.PrintFiles(pics);
+
+#endregion [GA0702] - Trees - A Space Odyssey
 
     Console.Read();
