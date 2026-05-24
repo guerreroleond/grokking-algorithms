@@ -151,24 +151,75 @@ using GrokkingAlgorithms._07Trees;
 
 #region [GA0702] - Trees - A Space Odyssey
 
-FileDirNode a = new() { Name = "a.pdf", IsFile = true };
-FileDirNode space = new() { Name = "space.png", IsFile = true };
-FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
-FileDirNode twoZeroZeroOne = new()
-{
-    Name = "2001",
-    IsFile = false,
-    Childs = [ a, space]
-};
-FileDirNode pics = new()
-{
-    Name = "pics",
-    IsFile = false,
-    Childs = [twoZeroZeroOne, odyssey]
-};
+// FileDirNode a = new() { Name = "a.pdf", IsFile = true };
+// FileDirNode space = new() { Name = "space.png", IsFile = true };
+// FileDirNode odyssey = new() { Name = "odyssey.png", IsFile = true };
+// FileDirNode twoZeroZeroOne = new()
+// {
+//     Name = "2001",
+//     IsFile = false,
+//     Childs = [ a, space]
+// };
+// FileDirNode pics = new()
+// {
+//     Name = "pics",
+//     IsFile = false,
+//     Childs = [twoZeroZeroOne, odyssey]
+// };
 
-RecursiveDepthFirstSearch.PrintFiles(pics);
+// RecursiveDepthFirstSearch.PrintFiles(pics);
 
 #endregion [GA0702] - Trees - A Space Odyssey
+
+#region [GA0703] - Trees - Huffman coding
+
+// Huffman tree for "paranoid android"
+// Character frequencies: d=3, a=3, r=2, n=2, o=2, i=2, p=1, ' '=1
+// Codes (left=0, right=1): d=00, r=010, n=011, o=100, i=101, p=1100, ' '=1101, a=111
+
+BTreeNode dLeaf     = new() { Value = "d" };
+BTreeNode rLeaf     = new() { Value = "r" };
+BTreeNode nLeaf     = new() { Value = "n" };
+BTreeNode oLeaf     = new() { Value = "o" };
+BTreeNode iLeaf     = new() { Value = "i" };
+BTreeNode pLeaf     = new() { Value = "p" };
+BTreeNode spaceLeaf = new() { Value = " " };
+BTreeNode aLeaf     = new() { Value = "a" };
+
+BTreeNode rnNode    = new() { LeftNode = rLeaf,    RightNode = nLeaf };
+BTreeNode oiNode    = new() { LeftNode = oLeaf,    RightNode = iLeaf };
+BTreeNode psNode    = new() { LeftNode = pLeaf,    RightNode = spaceLeaf };
+BTreeNode dnrNode   = new() { LeftNode = dLeaf,    RightNode = rnNode };
+BTreeNode psaNode   = new() { LeftNode = psNode,   RightNode = aLeaf };
+BTreeNode rightNode = new() { LeftNode = oiNode,   RightNode = psaNode };
+BTreeNode root      = new() { LeftNode = dnrNode,  RightNode = rightNode };
+
+// "paranoid android" encoded as List<bool> (true=1, false=0, index 0 = first bit):
+// p       a           r           a           n           o           i        d      ' '              a           n        d      r           o           i        d
+// 1 1 0 0 1 1 1       0 1 0       1 1 1       0 1 1       1 0 0       1 0 1    0 0    1 1 0 1          1 1 1       0 1 1    0 0    0 1 0       1 0 0       1 0 1    0 0
+List<bool> bitMask =
+[
+    true,  true,  false, false, // p
+    true,  true,  true,         // a
+    false, true,  false,        // r
+    true,  true,  true,         // a
+    false, true,  true,         // n
+    true,  false, false,        // o
+    true,  false, true,         // i
+    false, false,               // d
+    true,  true,  false, true,  // ' '
+    true,  true,  true,         // a
+    false, true,  true,         // n
+    false, false,               // d
+    false, true,  false,        // r
+    true,  false, false,        // o
+    true,  false, true,         // i
+    false, false,               // d
+];
+
+string decoded = HuffmanCoding.Decode(root, bitMask);
+Console.WriteLine($"Decoded: {decoded}"); // Expected: paranoid android
+
+#endregion [GA0703] - Trees - Huffman coding
 
     Console.Read();
