@@ -4,6 +4,8 @@ using GrokkingAlgorithms._03Recursion;
 using GrokkingAlgorithms._04Quicksort;
 using GrokkingAlgorithms._06BreadthFirstSearch;
 using GrokkingAlgorithms._07Trees;
+using GrokkingAlgorithms._09DijkstrasAlgorithm;
+using GrokkingAlgorithms._10GreedyAlgorithms;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -173,53 +175,103 @@ using GrokkingAlgorithms._07Trees;
 
 #region [GA0703] - Trees - Huffman coding
 
-// Huffman tree for "paranoid android"
-// Character frequencies: d=3, a=3, r=2, n=2, o=2, i=2, p=1, ' '=1
-// Codes (left=0, right=1): d=00, r=010, n=011, o=100, i=101, p=1100, ' '=1101, a=111
+// // Huffman tree for "paranoid android"
+// // Character frequencies: d=3, a=3, r=2, n=2, o=2, i=2, p=1, ' '=1
+// // Codes (left=0, right=1): d=00, r=010, n=011, o=100, i=101, p=1100, ' '=1101, a=111
 
-BTreeNode dLeaf     = new() { Value = "d" };
-BTreeNode rLeaf     = new() { Value = "r" };
-BTreeNode nLeaf     = new() { Value = "n" };
-BTreeNode oLeaf     = new() { Value = "o" };
-BTreeNode iLeaf     = new() { Value = "i" };
-BTreeNode pLeaf     = new() { Value = "p" };
-BTreeNode spaceLeaf = new() { Value = " " };
-BTreeNode aLeaf     = new() { Value = "a" };
+// BTreeNode dLeaf     = new() { Value = "d" };
+// BTreeNode rLeaf     = new() { Value = "r" };
+// BTreeNode nLeaf     = new() { Value = "n" };
+// BTreeNode oLeaf     = new() { Value = "o" };
+// BTreeNode iLeaf     = new() { Value = "i" };
+// BTreeNode pLeaf     = new() { Value = "p" };
+// BTreeNode spaceLeaf = new() { Value = " " };
+// BTreeNode aLeaf     = new() { Value = "a" };
 
-BTreeNode rnNode    = new() { LeftNode = rLeaf,    RightNode = nLeaf };
-BTreeNode oiNode    = new() { LeftNode = oLeaf,    RightNode = iLeaf };
-BTreeNode psNode    = new() { LeftNode = pLeaf,    RightNode = spaceLeaf };
-BTreeNode dnrNode   = new() { LeftNode = dLeaf,    RightNode = rnNode };
-BTreeNode psaNode   = new() { LeftNode = psNode,   RightNode = aLeaf };
-BTreeNode rightNode = new() { LeftNode = oiNode,   RightNode = psaNode };
-BTreeNode root      = new() { LeftNode = dnrNode,  RightNode = rightNode };
+// BTreeNode rnNode    = new() { LeftNode = rLeaf,    RightNode = nLeaf };
+// BTreeNode oiNode    = new() { LeftNode = oLeaf,    RightNode = iLeaf };
+// BTreeNode psNode    = new() { LeftNode = pLeaf,    RightNode = spaceLeaf };
+// BTreeNode dnrNode   = new() { LeftNode = dLeaf,    RightNode = rnNode };
+// BTreeNode psaNode   = new() { LeftNode = psNode,   RightNode = aLeaf };
+// BTreeNode rightNode = new() { LeftNode = oiNode,   RightNode = psaNode };
+// BTreeNode root      = new() { LeftNode = dnrNode,  RightNode = rightNode };
 
-// "paranoid android" encoded as List<bool> (true=1, false=0, index 0 = first bit):
-// p       a           r           a           n           o           i        d      ' '              a           n        d      r           o           i        d
-// 1 1 0 0 1 1 1       0 1 0       1 1 1       0 1 1       1 0 0       1 0 1    0 0    1 1 0 1          1 1 1       0 1 1    0 0    0 1 0       1 0 0       1 0 1    0 0
-List<bool> bitMask =
-[
-    true,  true,  false, false, // p
-    true,  true,  true,         // a
-    false, true,  false,        // r
-    true,  true,  true,         // a
-    false, true,  true,         // n
-    true,  false, false,        // o
-    true,  false, true,         // i
-    false, false,               // d
-    true,  true,  false, true,  // ' '
-    true,  true,  true,         // a
-    false, true,  true,         // n
-    false, false,               // d
-    false, true,  false,        // r
-    true,  false, false,        // o
-    true,  false, true,         // i
-    false, false,               // d
-];
+// // "paranoid android" encoded as List<bool> (true=1, false=0, index 0 = first bit):
+// // p       a           r           a           n           o           i        d      ' '              a           n        d      r           o           i        d
+// // 1 1 0 0 1 1 1       0 1 0       1 1 1       0 1 1       1 0 0       1 0 1    0 0    1 1 0 1          1 1 1       0 1 1    0 0    0 1 0       1 0 0       1 0 1    0 0
+// List<bool> bitMask =
+// [
+//     true,  true,  false, false, // p
+//     true,  true,  true,         // a
+//     false, true,  false,        // r
+//     true,  true,  true,         // a
+//     false, true,  true,         // n
+//     true,  false, false,        // o
+//     true,  false, true,         // i
+//     false, false,               // d
+//     true,  true,  false, true,  // ' '
+//     true,  true,  true,         // a
+//     false, true,  true,         // n
+//     false, false,               // d
+//     false, true,  false,        // r
+//     true,  false, false,        // o
+//     true,  false, true,         // i
+//     false, false,               // d
+// ];
 
-string decoded = HuffmanCoding.Decode(root, bitMask);
-Console.WriteLine($"Decoded: {decoded}"); // Expected: paranoid android
+// string decoded = HuffmanCoding.Decode(root, bitMask);
+// Console.WriteLine($"Decoded: {decoded}"); // Expected: paranoid android
 
 #endregion [GA0703] - Trees - Huffman coding
+
+#region [GA0901] - Dijkstra's Algorithm
+
+// // Graph: START→A=6, START→B=2, B→A=3, B→FINISH=5, A→FINISH=1
+// Dictionary<string, Dictionary<string, int>> graph = new()
+// {
+//     ["start"] = new() { ["a"] = 6, ["b"] = 2 },
+//     ["a"]     = new() { ["fin"] = 1 },
+//     ["b"]     = new() { ["a"] = 3, ["fin"] = 5 },
+//     ["fin"]   = []
+// };
+
+// // Initial costs from start (infinity = int.MaxValue for unreached nodes)
+// Dictionary<string, int> costs = new()
+// {
+//     ["a"]   = 6,
+//     ["b"]   = 2,
+//     ["fin"] = int.MaxValue
+// };
+
+// // Initial parents: direct neighbors of start
+// Dictionary<string, string?> parents = new()
+// {
+//     ["a"]   = "start",
+//     ["b"]   = "start",
+//     ["fin"] = null
+// };
+
+// int shortestPath = DijkstrasAlgorithm.GetShortestPath(graph, costs, parents);
+// Console.WriteLine($"Shortest path to fin: {shortestPath}"); // Expected: 6
+
+#endregion [GA0901] - Dijkstra's Algorithm
+
+#region [GA1001] - Set-covering problem
+
+HashSet<string> statesNeeded = ["mt", "wa", "or", "id", "nv", "ut", "ca", "az"];
+
+var stations = new Dictionary<string, HashSet<string>>
+{
+    ["kone"] = ["id", "nv", "ut"],
+    ["ktwo"] = ["wa", "id", "mt"],
+    ["kthree"] = ["or", "nv", "ca"],
+    ["kfour"] = ["nv", "ut"],
+    ["kfive"] = ["ca", "az"]
+};
+
+HashSet<string> result = SetCoveringProblem.GetStations(statesNeeded, stations);
+Console.WriteLine($"Stations: [{string.Join(", ", result)}]");
+
+#endregion [GA1001] - Set-covering problem
 
     Console.Read();
