@@ -296,4 +296,17 @@ Console.WriteLine($"Items: [{string.Join(", ", knapsackResult.SelectedItems.Sele
 
 #endregion [GA1101] - Knapsack problem (revisited)
 
+#region [GA1102] - Lomgest common substring
+
+// int result1 = LongestCommonSubstring.Solve("hish", "fish");
+// Console.WriteLine($"Longest common substring of 'hish' and 'fish': {result1}"); // Expected: 3 (ish)
+
+// int result2 = LongestCommonSubstring.Solve("hish", "vista");
+// Console.WriteLine($"Longest common substring of 'hish' and 'vista': {result2}"); // Expected: 2 (is)
+
+// int result3 = LongestCommonSubstring.Solve("fish", "fosh");
+// Console.WriteLine($"Longest common substring of 'fish' and 'fosh': {result3}"); // Expected: 2 (sh)
+
+#endregion [GA1102] - Lomgest common substring
+
 Console.Read();
