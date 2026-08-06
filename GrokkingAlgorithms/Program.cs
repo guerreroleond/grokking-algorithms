@@ -6,6 +6,8 @@ using GrokkingAlgorithms._06BreadthFirstSearch;
 using GrokkingAlgorithms._07Trees;
 using GrokkingAlgorithms._09DijkstrasAlgorithm;
 using GrokkingAlgorithms._10GreedyAlgorithms;
+using GrokkingAlgorithms._11DynamicProgramming;
+using static GrokkingAlgorithms._11DynamicProgramming.KnapsackProblem;
 
 #region [GA0101] - Intro - Binary Search
 
@@ -258,20 +260,40 @@ using GrokkingAlgorithms._10GreedyAlgorithms;
 
 #region [GA1001] - Set-covering problem
 
-HashSet<string> statesNeeded = ["mt", "wa", "or", "id", "nv", "ut", "ca", "az"];
+// HashSet<string> statesNeeded = ["mt", "wa", "or", "id", "nv", "ut", "ca", "az"];
 
-var stations = new Dictionary<string, HashSet<string>>
-{
-    ["kone"] = ["id", "nv", "ut"],
-    ["ktwo"] = ["wa", "id", "mt"],
-    ["kthree"] = ["or", "nv", "ca"],
-    ["kfour"] = ["nv", "ut"],
-    ["kfive"] = ["ca", "az"]
-};
+// var stations = new Dictionary<string, HashSet<string>>
+// {
+//     ["kone"] = ["id", "nv", "ut"],
+//     ["ktwo"] = ["wa", "id", "mt"],
+//     ["kthree"] = ["or", "nv", "ca"],
+//     ["kfour"] = ["nv", "ut"],
+//     ["kfive"] = ["ca", "az"]
+// };
 
-HashSet<string> result = SetCoveringProblem.GetStations(statesNeeded, stations);
-Console.WriteLine($"Stations: [{string.Join(", ", result)}]");
+// HashSet<string> result = SetCoveringProblem.GetStations(statesNeeded, stations);
+// Console.WriteLine($"Stations: [{string.Join(", ", result)}]");
 
 #endregion [GA1001] - Set-covering problem
 
-    Console.Read();
+#region [GA1101] - Knapsack problem (revisited)
+
+var items = new List<Item>
+{
+    new("Water",    3,  10),
+    new("Book",     1,  3),
+    new("Food",     2,  9),
+    new("Jacket",   2,  5),
+    new("Camera",   1,  6)
+};
+
+int capacity = 6;
+
+KnapsackResult knapsackResult = KnapsackProblem.Solve(items, capacity);
+Console.WriteLine($"Max value: {knapsackResult.MaxValue}");
+Console.WriteLine($"Total weight: {knapsackResult.TotalWeight}");
+Console.WriteLine($"Items: [{string.Join(", ", knapsackResult.SelectedItems.Select(i => i.Name))}]");
+
+#endregion [GA1101] - Knapsack problem (revisited)
+
+Console.Read();
