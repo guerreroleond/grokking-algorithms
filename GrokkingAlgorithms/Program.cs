@@ -278,22 +278,38 @@ using static GrokkingAlgorithms._11DynamicProgramming.KnapsackProblem;
 
 #region [GA1101] - Knapsack problem (revisited)
 
-var items = new List<Item>
-{
-    new("Water",    3,  10),
-    new("Book",     1,  3),
-    new("Food",     2,  9),
-    new("Jacket",   2,  5),
-    new("Camera",   1,  6)
-};
+// var items = new List<Item>
+// {
+//     new("Water",    3,  10),
+//     new("Book",     1,  3),
+//     new("Food",     2,  9),
+//     new("Jacket",   2,  5),
+//     new("Camera",   1,  6)
+// };
 
-int capacity = 6;
+// int capacity = 6;
 
-KnapsackResult knapsackResult = KnapsackProblem.Solve(items, capacity);
-Console.WriteLine($"Max value: {knapsackResult.MaxValue}");
-Console.WriteLine($"Total weight: {knapsackResult.TotalWeight}");
-Console.WriteLine($"Items: [{string.Join(", ", knapsackResult.SelectedItems.Select(i => i.Name))}]");
+// KnapsackResult knapsackResult = KnapsackProblem.Solve(items, capacity);
+// Console.WriteLine($"Max value: {knapsackResult.MaxValue}");
+// Console.WriteLine($"Total weight: {knapsackResult.TotalWeight}");
+// Console.WriteLine($"Items: [{string.Join(", ", knapsackResult.SelectedItems.Select(i => i.Name))}]");
 
 #endregion [GA1101] - Knapsack problem (revisited)
+
+#region [GA1102] - Lomgest common substring
+
+var wordA = "ABABC";
+var wordB = "BABCA";
+
+int result1102 = LongestCommonSubstring.Solve(wordA, wordB);
+Console.WriteLine($"Longest common substring of '{wordA}' and '{wordB}': {result1102}"); // Expected: 3 (ish or fsh)
+
+// int result1102b = LongestCommonSubstring.Solve("hish", "vista");
+// Console.WriteLine($"Longest common substring of 'hish' and 'vista': {result1102b}"); // Expected: 2 (is)
+
+// int result1102c = LongestCommonSubstring.Solve("blue", "clues");
+// Console.WriteLine($"Longest common substring of 'blue' and 'clues': {result1102c}"); // Expected: 3 (lue)
+
+#endregion [GA1102] - Lomgest common substring
 
 Console.Read();
